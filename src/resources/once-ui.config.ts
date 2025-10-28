@@ -14,7 +14,7 @@ import {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://ai-engineer-portfolio-git-main-sonwabises-projects-36037767.vercel.app"; // Update this with your actual Vercel URL
 
 const routes: RoutesConfig = {
   "/": true,
@@ -185,10 +185,10 @@ const mailchimp: MailchimpConfig = {
 // default schema data
 const schema: SchemaConfig = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
-  description: home.description,
-  email: "lorant@once-ui.com",
+  type: "Person",
+  name: "Sonwabise Gcolotela",
+  description: "AI Engineer specialising in machine learning, IoT, and intelligent systems",
+  email: "sonwabisegcolotela@icloud.com",
 };
 
 // social links
