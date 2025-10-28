@@ -77,8 +77,21 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
   );
 }
 
-function slugify(str: string): string {
-  const strWithAnd = str.replace(/&/g, " and "); // Replace & with 'and'
+function slugify(str: string | React.ReactNode): string {
+  // Convert React nodes to string
+  let strValue: string;
+  
+  if (typeof str === 'string') {
+    strValue = str;
+  } else if (Array.isArray(str)) {
+    strValue = str.join('');
+  } else if (str && typeof str === 'object' && 'toString' in str) {
+    strValue = String(str);
+  } else {
+    strValue = '';
+  }
+  
+  const strWithAnd = strValue.replace(/&/g, " and "); // Replace & with 'and'
   return transliterate(strWithAnd, {
     lowercase: true,
     separator: "-", // Replace spaces with -

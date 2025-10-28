@@ -1,0 +1,129 @@
+---
+title: "IoT-Based Agricultural Vision System for Smart Farming"
+publishedAt: "2024-10-15"
+summary: "An edge AI-powered vision system for real-time plant disease detection and growth monitoring using IoT integration with MQTT protocols for smart agriculture."
+images:
+  - "/images/projects/project-01/Croply.png"
+  - "/images/projects/project-01/crop-vision-system.png"
+team:
+  - name: "Sonwabise Gcolotela"
+    role: "IoT Developer & Computer Vision Engineer"
+    avatar: "/images/avatar-sonwabise.jpeg"
+    linkedIn: "https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/"
+link: ""
+---
+
+## Overview
+
+This project delivers a complete **IoT-integrated computer vision pipeline** for smart agriculture. It combines edge AI inference, IoT communication protocols, and data analytics to enable **real-time plant health monitoring**. The system identifies diseases and tracks plant growth using an optimized TensorFlow Lite model deployed on a **Raspberry Pi 4** with **MQTT-based data transmission** to centralized farm management dashboards.
+
+The system addresses one of the key challenges in greenhouse and field farming: the lack of automated, reliable, and continuous crop monitoring.
+
+## Problem Statement
+
+Modern agricultural operations face several recurring challenges:
+
+- **Manual Inspections** are time-consuming and inconsistent  
+- **Delayed Disease Detection** leads to crop losses and inefficient interventions  
+- **Variable Lighting Conditions** in greenhouses disrupt image-based assessments  
+- **Limited Data Infrastructure** prevents farms from making data-driven decisions  
+
+The goal was to build an **edge AI vision system** that could operate reliably in these environments, achieving over **85% detection accuracy** while consuming minimal power and bandwidth.
+
+## Methodology
+
+### System Architecture
+
+The system follows a **three-tier distributed architecture**:
+
+#### Edge Tier (Raspberry Pi 4)
+- High-resolution image capture using Pi Camera with adaptive exposure control  
+- Local preprocessing: resizing, normalization, and augmentation  
+- TensorFlow Lite model inference with INT8 quantization (reduced size: 14MB → 3.8MB)  
+- MQTT-based message publishing using `paho-mqtt` and `tflite_runtime`  
+
+#### Communication Layer
+- **Eclipse Mosquitto MQTT broker** with TLS encryption  
+- Quality of Service (QoS) level 1 for reliable delivery  
+- Hierarchical topic structure: `farm/greenhouse1/sensor01/telemetry`  
+
+#### Backend Tier
+- Centralized data aggregation and analytics  
+- MongoDB for telemetry storage  
+- Grafana dashboard for live visualization and alert generation  
+
+### Computer Vision Pipeline
+
+A custom **MobileNetV2-based classifier** was trained on **8,000+ labeled plant images** across **15 disease categories**. The training process included:
+- Data augmentation for brightness, rotation, and angle variance  
+- Transfer learning from ImageNet weights  
+- TensorFlow/Keras mixed precision training  
+- Model optimization through post-training quantization for edge deployment  
+
+Final model accuracy reached **87.3%**, exceeding the initial 85% target.
+
+### IoT Integration
+
+The **MQTT protocol** served as the backbone for data communication between devices and the backend:
+- JSON payloads include timestamp, classification label, and confidence score  
+- Local buffering ensures data continuity during network interruptions  
+- Automatic reconnection mechanisms maintain uptime  
+- Average power consumption remains below **5W per node**, suitable for solar power setups  
+
+## Results
+
+### Technical Performance
+- **Accuracy**: 87.3% (15 disease categories)  
+- **Inference Time**: <500ms per image  
+- **System Uptime**: 99.2% over a 3-month pilot  
+- **Power Draw**: <5W per sensor node  
+
+### Operational Impact
+- **75% reduction** in manual inspection time  
+- **4 days earlier** disease detection on average  
+- **30% reduction** in disease-related crop loss  
+- **18% increase** in overall healthy plant yield  
+- ROI achieved within **6 months** of deployment  
+
+## Challenges and Solutions
+
+1. **Lighting Variability**  
+   Implemented adaptive white balance and exposure correction algorithms.  
+2. **Hardware Constraints**  
+   Quantized model to enable efficient inference on Raspberry Pi hardware.  
+3. **Connectivity Issues**  
+   Introduced MQTT local buffering and reconnection strategies.  
+4. **Energy Efficiency**  
+   Used scheduled inference and device sleep modes to maintain low power usage.  
+
+## Key Insights
+
+Building this IoT vision system reinforced critical lessons in **edge AI deployment and real-world environmental adaptation**:
+
+- Intelligent model compression can maintain high accuracy with limited resources.  
+- MQTT’s pub/sub pattern enables smooth scaling from 8 to 20+ sensors without major changes.  
+- Reliable preprocessing and exposure control are crucial for performance in greenhouses.  
+- Interdisciplinary collaboration—AI, embedded systems, and agriculture—ensures practical usability.
+
+## Technologies and Tools
+
+- **Edge Hardware**: Raspberry Pi 4, Pi Camera Module v2  
+- **AI Frameworks**: TensorFlow, TensorFlow Lite, MobileNetV2  
+- **IoT Protocols**: MQTT (Eclipse Mosquitto), `paho-mqtt`  
+- **Programming Languages**: Python  
+- **Data Management**: MongoDB, Grafana  
+- **Optimization**: INT8 quantization, model pruning, Docker containerization  
+
+## Industry Applications
+
+The agricultural vision system has broad applicability across several domains:
+
+- **Precision Agriculture**: Automated health and growth analysis  
+- **Smart Greenhouses**: Environmental control and crop monitoring  
+- **Vertical Farming**: Compact, scalable systems with real-time feedback  
+- **Agricultural Research**: Disease pattern tracking and growth analytics  
+- **Supply Chain Optimization**: Early detection enabling predictive yield management  
+
+---
+
+This project demonstrates practical expertise in **computer vision, IoT, and embedded AI systems**, showcasing how **edge AI** can transform agricultural monitoring through real-time intelligence, efficiency, and scalability.

@@ -1,21 +1,21 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Sonwabise",
+  lastName: "Gcolotela",
+  name: `Sonwabise Gcolotela`,
+  role: "AI Engineer",
+  avatar: "/images/avatar-sonwabise.jpeg",
+  email: "sonwabisegcolotela@icloud.com",
+  location: "Africa/Johannesburg", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>Updates on AI, data engineering, and tech projects</>,
 };
 
 const social: Social = [
@@ -24,17 +24,12 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/SONWA560",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/",
   },
   {
     name: "Email",
@@ -48,8 +43,8 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  description: `Portfolio website showcasing AI engineering, machine learning, and data-driven solutions by ${person.name}`,
+  headline: <>Transforming data into intelligent systems that automate, predict, and innovate</>,
   featured: {
     display: true,
     title: (
@@ -61,18 +56,12 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
-      , where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Sonwabise, an AI Engineer and final-year BCom Information Systems student at the University of the Western Cape.
+      <br /> I specialize in building intelligent systems that bridge data, automation, and innovation.
     </>
   ),
 };
@@ -81,7 +70,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from Cape Town, South Africa`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -90,7 +79,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -98,52 +87,83 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Sonwabise is a Cape Town-based AI Engineer and final-year BCom Information Systems student 
+        at the University of the Western Cape (GPA: 78%). With expertise spanning machine learning, 
+        data engineering, and business intelligence, he transforms complex business challenges into 
+        intelligent, automated solutions. His work includes developing AI-powered vision systems, 
+        IoT automation, and enterprise-scale document processing platforms using cutting-edge 
+        technologies like PyTorch, Azure AI, and Google Cloud.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+    display: true,
+    title: "Projects & Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "AI-Powered RFP/RFQ Analysis System",
+        timeframe: "2024",
+        role: "AI Developer - Think Tank Software Solutions",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Developed an AI-powered RFP/RFQ analysis system to automate document processing and enhance bid accuracy using React, FastAPI, and Azure AI services (Form Recogniser, Cognitive Search, OpenAI).
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Implemented secure 2FA authentication and ensured GDPR/POPIA compliance while achieving 90%+ accuracy and reducing analysis time by 60%.
+          </>,
+          <>
+            Built cloud-native solution with REST APIs, NLP, and workflow automation for intelligent document processing.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Inventory Management System for TechInnovators",
+        timeframe: "2024",
+        role: "Full-Stack Developer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Developed an integrated equipment inventory tracking system using Oracle APEX and Python for real-time tracking of IoT and computing equipment.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Built centralized platform with QR code scanning for check-ins and automated reporting capabilities.
+          </>,
+          <>
+            Designed custom APIs for Python-APEX integration, ensuring seamless communication between employee and admin interfaces with full system documentation.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "AI-Based Vision System for Smart Waste Sorting",
+        timeframe: "2024",
+        role: "Machine Learning Engineer",
+        achievements: [
+          <>
+            Developed a machine learning-based vision system achieving 82.5% accuracy using MobileNetV2 to automate waste sorting into seven categories.
+          </>,
+          <>
+            Applied transfer learning with ImageNet weights and preprocessed 17,000 images to optimize model performance.
+          </>,
+          <>
+            Technologies: Python (PyTorch, MobileNetV2), Computer Vision, Deep Learning for smart waste management and recycling automation.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "IoT-Based Automated Motion Detector",
+        timeframe: "2024",
+        role: "IoT Developer",
+        achievements: [
+          <>
+            Developed an IoT-based automated motion detection alarm system using ESP32 microcontrollers, PIR sensors, and MQTT communication.
+          </>,
+          <>
+            Configured ESP32 as MQTT publisher to send motion detection data to Raspberry Pi broker with real-time alerts.
+          </>,
+          <>
+            Integrated buzzer alarm and email notification features for smart security systems and home automation.
           </>,
         ],
         images: [],
@@ -151,90 +171,109 @@ const about: About = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education & Certifications",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "University of the Western Cape, Cape Town",
+        description: <>BCom Information Systems (Final Year) • GPA: 78% • Relevant Coursework: Data Analytics, Business Analytics, Database Management, Business Intelligence, Systems Analysis, Machine Learning, AI</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Awards & Certifications",
+        description: <>DataCamp Associate Data Engineer (In Progress) • DataCamp Intermediate SQL • INSETA Bursary (2024-2025) • LinkedIn Learning PyTorch Deep Learning • Enactus UWC Top 15 Finalist (MTN Challenge) • Absa Inkanyezi IT, Cyber Security & Audit Academy</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Skills & Technologies",
     skills: [
       {
-        title: "Figma",
+        title: "Machine Learning & AI",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Expertise in deep learning, computer vision, and AI model development using PyTorch, Keras, and transfer learning techniques. Experienced in classification, regression, and neural network architectures.</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Python",
+            icon: "python",
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "PyTorch",
+            icon: "code",
           },
         ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Data Engineering & Analytics",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Proficient in ETL pipelines, data transformation, and analytics using SQL, pandas, NumPy, and cloud platforms. Skilled in building dashboards with Power BI and creating data-driven insights.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "SQL",
+            icon: "database",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
+            name: "Python",
+            icon: "python",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Cloud & DevOps",
+        description: (
+          <>Experience with Google Cloud Platform (BigQuery, Vertex AI, Cloud Storage, Cloud Run, Gemini) and Azure AI services. Skilled in deploying scalable cloud-native solutions and API development.</>
+        ),
+        tags: [
+          {
+            name: "GCP",
+            icon: "cloud",
+          },
+          {
+            name: "Azure",
+            icon: "cloud",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "IoT & Embedded Systems",
+        description: (
+          <>Hands-on experience with Arduino (C++), ESP32, PIR sensors, MQTT protocols, and Raspberry Pi for building automated IoT solutions and smart systems.</>
+        ),
+        tags: [],
+        images: [],
+      },
+      {
+        title: "Business Intelligence & Analysis",
+        description: (
+          <>Strong foundation in Power BI (data modeling, DAX, report building), systems analysis, requirements elicitation, workflow automation, and stakeholder management. Skilled in KPI development and data storytelling.</>
+        ),
+        tags: [],
+        images: [],
+      },
+      {
+        title: "GenAI & Automation",
+        description: (
+          <>Experienced in building GenAI solutions using OpenAI API, n8n, Zapier, v0.dev, Cursor, and Supabase for workflow automation and intelligent application development.</>
+        ),
+        tags: [
+          {
+            name: "OpenAI",
+            icon: "code",
           },
           {
             name: "Supabase",
             icon: "supabase",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },  
+        images: [],
+      },
     ],
   },
-};
-
-const blog: Blog = {
-  path: "/blog",
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work: Work = {
@@ -242,59 +281,8 @@ const work: Work = {
   label: "Work",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
-const gallery: Gallery = {
-  path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
-};
-
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, work };

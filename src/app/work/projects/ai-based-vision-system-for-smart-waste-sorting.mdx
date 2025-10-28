@@ -1,0 +1,105 @@
+---
+title: "AI-Based Vision System for Smart Waste Sorting"
+publishedAt: "2024-09-15"
+summary: "A machine learning-based computer vision system achieving 82.5% accuracy in classifying waste into seven categories for automated recycling and waste management."
+images:
+  - "/images/projects/project-01/smart-waste-sorting-system.png"
+  - "/images/projects/project-01/ai-vision-waste-recycle.webp"
+team:
+  - name: "Sonwabise Gcolotela"
+    role: "AI Engineer & ML Developer"
+    avatar: "/images/avatar-sonwabise.jpeg"
+    linkedIn: "https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/"
+link: "https://github.com/SONWA560/Smart-Sorting-Vision-System"
+---
+
+## Overview
+
+As part of my **IFS 315 Emerging Trends in Information Systems** module at the University of the Western Cape, I developed a machine learning-based vision system for smart waste classification. The objective was to build an image classification model capable of automatically sorting waste into appropriate categories, contributing to more efficient recycling processes and waste management systems.
+
+This project demonstrated real-world application of computer vision and deep learning techniques to address environmental sustainability challenges through intelligent automation.
+
+## Problem Statement
+
+The system needed to accurately classify images of waste items into one of **seven categories**: paper, glass, cardboard, metal, plastic, e-waste, and medical waste. This project simulated a real-world computer vision challenge, requiring a model that could handle:
+
+- Varied image angles and perspectives
+- Different lighting conditions
+- Partially obscured objects
+- Diverse waste item appearances within each category
+
+The goal was to create a robust classification system that could be deployed in smart waste management facilities to automate the sorting process and improve recycling efficiency.
+
+## Methodology
+
+### Dataset
+
+I utilized a publicly available waste classification dataset consisting of approximately **17,000 images** evenly distributed across the seven waste categories. This balanced dataset provided sufficient training data for each class while maintaining consistency in the model's learning process.
+
+### Data Pre-processing
+
+To prepare the data for optimal model training, I implemented the following preprocessing steps:
+
+- **Image Resizing**: Resized all images to 244 × 244 pixels to maintain consistency and reduce computational requirements
+- **Normalization**: Normalized pixel values using the ImageNet dataset's mean and standard deviation to align with the pretrained model's expected input distribution
+- **Data Split**: Divided the dataset into 70% training, 15% validation, and 15% test sets to ensure proper model evaluation and prevent overfitting
+
+### Model Development
+
+The model was developed using **PyTorch** and the **MobileNetV2 architecture**. MobileNetV2 was specifically selected for its:
+
+- **Lightweight Structure**: Efficient architecture optimized for resource-constrained environments
+- **Performance Efficiency**: Ideal for development on my MacBook M2, which lacks a CUDA-compatible GPU
+- **Transfer Learning Capability**: Strong feature extraction capabilities when fine-tuned on domain-specific data
+
+To improve accuracy and accelerate training, I applied **transfer learning** by leveraging pretrained weights from **ImageNet**. This approach enabled the model to build upon existing visual feature representations and adapt them to waste classification, significantly enhancing performance compared to training from scratch.
+
+## Performance Evaluation
+
+The model's performance was assessed using accuracy and F1 score metrics. Final results demonstrated strong classification capability:
+
+- **Accuracy**: 82.5%
+- **F1 Score**: 82.6%
+
+These metrics indicate that the model successfully learned to distinguish between waste categories with high consistency, making it viable for real-world deployment in automated waste sorting systems.
+
+## Challenges and Solutions
+
+Throughout the project, I encountered several technical challenges that required problem-solving and engineering expertise:
+
+1. **Model Convergence Issues**: Debugging training instabilities and adjusting learning rates and optimization strategies
+2. **Hardware Constraints**: Optimizing the training pipeline to work efficiently on non-CUDA hardware (MacBook M2)
+3. **Fine-tuning Strategy**: Balancing between freezing pretrained layers and allowing sufficient model flexibility to learn waste-specific features
+4. **Overfitting Prevention**: Implementing appropriate regularization techniques to ensure model generalization
+
+## Key Insights
+
+This project offered valuable hands-on experience in deploying computer vision solutions and navigating the practical challenges of working with AI models. I particularly enjoyed the **problem-solving and troubleshooting aspect**, from debugging model convergence issues to fine-tuning the training pipeline.
+
+The experience gave me a deeper appreciation for the **engineering rigor** involved in AI systems, including:
+
+- The importance of proper data preprocessing and augmentation
+- Strategic use of transfer learning for domain adaptation
+- Performance optimization for resource-constrained environments
+- Balancing model complexity with computational efficiency
+
+## Technologies and Tools
+
+- **Python**: Primary programming language
+- **PyTorch**: Deep learning framework for model development and training
+- **MobileNetV2**: Convolutional neural network architecture with transfer learning
+- **ImageNet Pretrained Weights**: For enhanced feature extraction
+- **Public Waste Classification Dataset**: Approximately 17,000 images across 7 categories
+
+## Industry Applications
+
+This smart waste sorting vision system has direct applications in:
+
+- **Automated Recycling Facilities**: Real-time waste classification on conveyor belts
+- **Smart City Infrastructure**: IoT-integrated waste bins with intelligent sorting
+- **Environmental Sustainability**: Improving recycling rates and reducing contamination
+- **Waste Management Optimization**: Data-driven insights for waste stream analysis
+
+---
+
+This project demonstrates the practical application of AI and computer vision in addressing environmental challenges while showcasing strong technical skills in machine learning, transfer learning, and model optimization.

@@ -60,7 +60,7 @@ export default function About() {
         path={about.path}
         image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
         author={{
-          name: person.name,
+          name: "Sonwabise Gcolotela",
           url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
@@ -143,7 +143,7 @@ export default function About() {
               </Row>
             )}
             <Heading className={styles.textAlign} variant="display-strong-xl">
-              {person.name}
+              {"Sonwabise Gcolotela"}
             </Heading>
             <Text
               className={styles.textAlign}
