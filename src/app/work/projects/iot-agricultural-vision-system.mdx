@@ -3,8 +3,12 @@ title: "IoT-Based Agricultural Vision System for Smart Farming"
 publishedAt: "2024-10-15"
 summary: "An edge AI-powered vision system for real-time plant disease detection and growth monitoring using IoT integration with MQTT protocols for smart agriculture."
 images:
-  - "/images/projects/project-01/Croply.png"
   - "/images/projects/project-01/crop-vision-system.png"
+  - "/images/projects/project-01/Croply.png"
+  - "/images/projects/project-01/Croply_AI_System_Architecture.drawio.png"
+  - "/images/projects/project-01/plant_growth_stages.jpg"
+  - "/images/projects/project-01/disease_detection.jpg"
+
 team:
   - name: "Sonwabise Gcolotela"
     role: "IoT Developer & Computer Vision Engineer"
@@ -34,6 +38,8 @@ The goal was to build an **edge AI vision system** that could operate reliably i
 
 ### System Architecture
 
+![System Architecture Diagram](/images/projects/project-01/Croply_AI_System_Architecture.drawio.png)
+
 The system follows a **three-tier distributed architecture**:
 
 #### Edge Tier (Raspberry Pi 4)
@@ -53,6 +59,9 @@ The system follows a **three-tier distributed architecture**:
 - Grafana dashboard for live visualization and alert generation  
 
 ### Computer Vision Pipeline
+
+![Plant Growth Stages](/images/projects/project-01/plant_growth_stages.jpg)
+![Disease Detection Model](/images/projects/project-01/disease_detection.jpg)
 
 A custom **MobileNetV2-based classifier** was trained on **8,000+ labeled plant images** across **15 disease categories**. The training process included:
 - Data augmentation for brightness, rotation, and angle variance  
