@@ -60,8 +60,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Sonwabise, an AI Engineer and final-year BCom Information Systems student at the University of the Western Cape.
-      <br /> I specialize in building intelligent systems that bridge data, automation, and innovation.
+      I'm Sonwabise, a BCom Information Systems graduate [Cum Laude].
+      <br /> I specialise in building intelligent systems that bridge data, automation, and innovation.
     </>
   ),
 };
@@ -87,8 +87,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Sonwabise is a Cape Town-based AI Engineer and final-year BCom Information Systems student 
-        at the University of the Western Cape (GPA: 78%). With expertise spanning machine learning, 
+        Sonwabise is a Cape Town-based BCom Information Systems graduate [Cum Laude]. With expertise spanning machine learning, 
         data engineering, and business intelligence, he transforms complex business challenges into 
         intelligent, automated solutions. His work includes developing AI-powered vision systems, 
         IoT automation, and enterprise-scale document processing platforms using cutting-edge 
