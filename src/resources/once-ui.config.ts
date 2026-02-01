@@ -187,7 +187,7 @@ const schema: SchemaConfig = {
   logo: "",
   type: "Person",
   name: "Sonwabise Gcolotela",
-  description: "AI Engineer specialising in machine learning, IoT, and intelligent systems",
+  description: "BCom Information Systems Graduate [Cum Laude] specialising in machine learning, data science, and intelligent systems",
   email: "sonwabisegcolotela@icloud.com",
 };
 
