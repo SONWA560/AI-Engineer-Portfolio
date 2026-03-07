@@ -100,6 +100,30 @@ const about: About = {
     title: "Projects & Experience",
     experiences: [
       {
+        company: "AJ Hair ZA – E-Commerce Platform",
+        timeframe: "2025",
+        role: "Full-Stack Developer",
+        achievements: [
+          <>
+            Built a full-stack niche e-commerce platform for a South African wig retailer using Next.js 15, Firebase Firestore, and Clerk authentication, featuring guest cart persistence and a three-role access model.
+          </>,
+          <>
+            Integrated OpenAI GPT-3.5 Turbo for natural language product search and GPT-4o Vision for image-based similarity search, enabling customers to find products via photo upload.
+          </>,
+          <>
+            Developed a three-report admin analytics dashboard covering financial performance, product metrics (best-selling, most-viewed), and customer demographics with province-level breakdowns.
+          </>,
+        ],
+        images: [
+          {
+            src: "/images/projects/project-01/e-commerce-store.png",
+            alt: "AJ Hair ZA E-Commerce Platform",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
         company: "AI-Powered RFP/RFQ Analysis System",
         timeframe: "2024",
         role: "AI Developer - Think Tank Software Solutions",

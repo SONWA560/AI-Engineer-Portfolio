@@ -1,0 +1,75 @@
+---
+title: "AJ Hair ZA – AI-Powered Hair E-Commerce Platform"
+publishedAt: "2025-03-01"
+summary: "A full-stack e-commerce platform for a South African wig retailer, featuring natural language AI search, GPT-4o Vision image search, and a three-report admin analytics dashboard — built on Next.js 15 and Firebase."
+images:
+  - "/images/projects/project-01/e-commerce-store.png"
+team:
+  - name: "Sonwabise Gcolotela"
+    role: "Full-Stack Developer"
+    avatar: "/images/avatar-sonwabise.jpeg"
+    linkedIn: "https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/"
+link: "https://aj-hair-za.vercel.app"
+---
+
+## Overview
+
+AJ Hair ZA is a full-featured e-commerce platform built for a South African wig and hair extension retailer. Beyond standard shopping functionality, the platform is differentiated by two AI-powered discovery modes: natural language product search and image-based similarity search. The project was built as part of an academic systems design brief, with a strong emphasis on thoughtful UX, role-based access, and actionable analytics.
+
+The live store is at [aj-hair-za.vercel.app](https://aj-hair-za.vercel.app). Source code is on [GitHub](https://github.com/SONWA560/AJ-Hair-ZA).
+
+## The Brief
+
+The challenge was to design a niche e-commerce platform that goes beyond what a generic Shopify store offers. The system had to serve three user roles (Guest, Customer, Admin), support AI-enhanced product discovery, and include a meaningful analytics layer for store management. Critically, the emphasis was on system design and differentiation — not just feature volume.
+
+## What I Built
+
+### Three-Role Access Model
+
+**Guests** can browse the full catalogue, filter by category, price, hair type, length, and colour, add items to cart, and edit their cart — all without an account. Cart state persists in the browser. Sign-up is only prompted at checkout, reducing friction for casual browsers.
+
+**Customers** get a profile, order history, and a managed wishlist after signing up via Clerk authentication.
+
+**Admins** have a full dashboard covering product CRUD with free-form tag support, order management with status filtering, and three analytics report types.
+
+### AI-Powered Discovery
+
+**Natural language search:** Powered by OpenAI GPT-3.5 Turbo, customers can type prompts like "I want a long curly wig under R800 for a formal event" and receive ranked product results with filters applied — not just a keyword match.
+
+**Image search:** Powered by GPT-4o Vision, customers upload a photo of a style they want. The platform returns the closest matching products from the catalogue. This directly replicates the "Google Image Search for wigs" use case, which no South African hair retailer currently offers.
+
+### Product Cards with Attribute Pills
+
+Rather than bare product cards with just a name and price, each card surfaces the key attributes a wig buyer needs at a glance: hair type, length, colour, and density. This allows meaningful comparison without navigating to individual product pages.
+
+### Admin Analytics Dashboard
+
+Three reporting views, each designed for actionable decisions rather than vanity metrics:
+
+**Financial report:** Revenue, cost of sales, gross profit, and payment method breakdown (Card, EFT, Cash on Delivery, PayPal simulated). Per-product margin analysis is included to surface low-margin items.
+
+**Product report:** Best-selling products and categories by order volume, most-viewed products via Firestore view counters incremented on each product page visit, and conversion gap analysis (high views, low purchases).
+
+**Customer report:** Top buyers by spend, order frequency, and province-level demographic breakdown — enabling targeted promotions for high-value customer segments.
+
+### Similar Products
+
+On each product page, a "Similar Wigs You Might Like" section surfaces products sharing the same hair type — a lightweight recommendation layer that drives discovery without requiring a full ML recommendation engine.
+
+## Technical Implementation
+
+The platform is built on **Next.js 15 App Router** with React Server Components for performance. **Firebase Firestore** (accessed via the Admin SDK server-side) handles all product, order, and user data. Authentication runs through **Clerk v6** with the admin role gated by email. Images are stored in **Firebase Storage**. Transactional emails (order confirmations) use **Resend**.
+
+Payment is simulated — customers select a payment method and confirm, at which point the order moves from pending to completed. No real payment processing is integrated, per the brief's scope constraints.
+
+## Tech Stack
+
+**Framework:** Next.js 15 (App Router, React Server Components)  
+**Database:** Firebase Firestore (Admin SDK)  
+**Auth:** Clerk v6  
+**Storage:** Firebase Storage  
+**AI:** OpenAI GPT-3.5 Turbo (text search), GPT-4o Vision (image search)  
+**Email:** Resend  
+**UI:** Tailwind CSS, shadcn/ui  
+**Deployment:** Vercel  
+**Language:** TypeScript (88%), JavaScript (12%)
