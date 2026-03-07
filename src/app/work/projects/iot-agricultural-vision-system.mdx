@@ -19,120 +19,71 @@ link: "https://github.com/SONWA560/Croply_AI"
 
 ## Overview
 
-This project delivers a complete **IoT-integrated computer vision pipeline** for smart agriculture. It combines edge AI inference, IoT communication protocols, and data analytics to enable **real-time plant health monitoring**. The system identifies diseases and tracks plant growth using an optimized TensorFlow Lite model deployed on a **Raspberry Pi 4** with **MQTT-based data transmission** to centralized farm management dashboards.
+Croply is an **edge AI vision system** for smart agriculture, combining a TensorFlow Lite model, IoT communication, and live dashboards to give farmers real-time insight into plant health and disease. Deployed on a **Raspberry Pi 4**, the system detects diseases across 15 categories and tracks growth stages without relying on cloud inference or continuous internet access.
 
-The system addresses one of the key challenges in greenhouse and field farming: the lack of automated, reliable, and continuous crop monitoring.
+## The Problem
 
-## Problem Statement
+Greenhouse and field farms share a common blind spot: crop monitoring is reactive, not proactive. By the time disease is visible to the human eye, it has often already spread.
 
-Modern agricultural operations face several recurring challenges:
+- Manual inspections are inconsistent and time-consuming
+- Disease is typically caught days after onset, reducing intervention effectiveness
+- Variable lighting in greenhouses disrupts image-based tools
+- Most farms lack the data infrastructure to make predictive decisions
 
-- **Manual Inspections** are time-consuming and inconsistent  
-- **Delayed Disease Detection** leads to crop losses and inefficient interventions  
-- **Variable Lighting Conditions** in greenhouses disrupt image-based assessments  
-- **Limited Data Infrastructure** prevents farms from making data-driven decisions  
+The target was a system that could operate reliably at the edge, achieve **85%+ detection accuracy**, and run on under **5W** of power per node.
 
-The goal was to build an **edge AI vision system** that could operate reliably in these environments, achieving over **85% detection accuracy** while consuming minimal power and bandwidth.
-
-## Methodology
-
-### System Architecture
+## System Architecture
 
 ![System Architecture Diagram](/images/projects/project-01/Croply_AI_System_Architecture.drawio.png)
 
-The system follows a **three-tier distributed architecture**:
+The system follows a **three-tier architecture**:
 
-#### Edge Tier (Raspberry Pi 4)
-- High-resolution image capture using Pi Camera with adaptive exposure control  
-- Local preprocessing: resizing, normalization, and augmentation  
-- TensorFlow Lite model inference with INT8 quantization (reduced size: 14MB → 3.8MB)  
-- MQTT-based message publishing using `paho-mqtt` and `tflite_runtime`  
+**Edge (Raspberry Pi 4):** Pi Camera captures high-resolution images with adaptive exposure control. Frames are preprocessed locally (resize, normalize, augment) before being passed to a TFLite model running INT8 quantization. Results are published over MQTT via `paho-mqtt`.
 
-#### Communication Layer
-- **Eclipse Mosquitto MQTT broker** with TLS encryption  
-- Quality of Service (QoS) level 1 for reliable delivery  
-- Hierarchical topic structure: `farm/greenhouse1/sensor01/telemetry`  
+**Communication Layer:** Eclipse Mosquitto broker with TLS encryption and QoS level 1 for reliable delivery. Topic structure: `farm/greenhouse1/sensor01/telemetry`. Local buffering handles network interruptions gracefully.
 
-#### Backend Tier
-- Centralized data aggregation and analytics  
-- MongoDB for telemetry storage  
-- Grafana dashboard for live visualization and alert generation  
+**Backend:** MongoDB stores telemetry; Grafana provides live dashboards and threshold-based alerting.
 
-### Computer Vision Pipeline
+## The Model
 
 ![Plant Growth Stages](/images/projects/project-01/plant_growth_stages.jpg)
-![Disease Detection Model](/images/projects/project-01/disease_detection.jpg)
 
-A custom **MobileNetV2-based classifier** was trained on **8,000+ labeled plant images** across **15 disease categories**. The training process included:
-- Data augmentation for brightness, rotation, and angle variance  
-- Transfer learning from ImageNet weights  
-- TensorFlow/Keras mixed precision training  
-- Model optimization through post-training quantization for edge deployment  
 
-Final model accuracy reached **87.3%**, exceeding the initial 85% target.
+A **MobileNetV2 classifier** was trained on **8,000+ labeled plant images** across **15 disease categories** using transfer learning from ImageNet weights. Training used TensorFlow/Keras with mixed precision to accelerate throughput.
 
-### IoT Integration
+Post-training, the model was optimized via **INT8 quantization**, shrinking it from **14MB → 3.8MB**, small enough for real-time inference on Raspberry Pi hardware while staying under the 500ms latency target.
 
-The **MQTT protocol** served as the backbone for data communication between devices and the backend:
-- JSON payloads include timestamp, classification label, and confidence score  
-- Local buffering ensures data continuity during network interruptions  
-- Automatic reconnection mechanisms maintain uptime  
-- Average power consumption remains below **5W per node**, suitable for solar power setups  
+Final accuracy: **87.3%**, exceeding the initial 85% target.
 
 ## Results
 
-### Technical Performance
-- **Accuracy**: 87.3% (15 disease categories)  
-- **Inference Time**: Less than 500ms per image  
-- **System Uptime**: 99.2% over a 3-month pilot  
-- **Power Draw**: Less than 5W per sensor node  
+**Technical performance**
+- **87.3% accuracy** across 15 disease categories, exceeding the 85% target
+- Inference latency under **500ms** per image
+- **99.2% system uptime** over a 3-month pilot
+- Power draw under **5W** per sensor node
 
-### Operational Impact
-- **75% reduction** in manual inspection time  
-- **4 days earlier** disease detection on average  
-- **30% reduction** in disease-related crop loss  
-- **18% increase** in overall healthy plant yield  
-- ROI achieved within **6 months** of deployment  
+**Operational impact**
+- **75% reduction** in manual inspection time
+- Disease detected an average of **4 days earlier**
+- **30% reduction** in disease-related crop loss
+- **18% increase** in healthy plant yield
+- ROI achieved within **6 months** of deployment
 
-## Challenges and Solutions
+## Key Engineering Challenges
 
-1. **Lighting Variability**  
-   Implemented adaptive white balance and exposure correction algorithms.  
-2. **Hardware Constraints**  
-   Quantized model to enable efficient inference on Raspberry Pi hardware.  
-3. **Connectivity Issues**  
-   Introduced MQTT local buffering and reconnection strategies.  
-4. **Energy Efficiency**  
-   Used scheduled inference and device sleep modes to maintain low power usage.  
+**Lighting variability:** Adaptive white balance and exposure correction are baked into the preprocessing pipeline, ensuring consistent image quality across different times of day and greenhouse conditions.
 
-## Key Insights
+**Edge constraints:** INT8 quantization and model pruning brought the model to a size and speed viable for Raspberry Pi without sacrificing meaningful accuracy.
 
-Building this IoT vision system reinforced critical lessons in **edge AI deployment and real-world environmental adaptation**:
+**Connectivity resilience:** MQTT local buffering and automatic reconnection logic ensured zero data loss during network drops, maintaining the 99.2% uptime figure.
 
-- Intelligent model compression can maintain high accuracy with limited resources.  
-- MQTT's pub/sub pattern enables smooth scaling from 8 to 20+ sensors without major changes.  
-- Reliable preprocessing and exposure control are crucial for performance in greenhouses.  
-- Interdisciplinary collaboration—AI, embedded systems, and agriculture—ensures practical usability.
+**Scalability:** MQTT's pub/sub topology means scaling from 8 to 20+ sensor nodes requires no architectural changes, just additional publishers.
 
-## Technologies and Tools
+## Tech Stack
 
-- **Edge Hardware**: Raspberry Pi 4, Pi Camera Module v2  
-- **AI Frameworks**: TensorFlow, TensorFlow Lite, MobileNetV2  
-- **IoT Protocols**: MQTT (Eclipse Mosquitto), `paho-mqtt`  
-- **Programming Languages**: Python  
-- **Data Management**: MongoDB, Grafana  
-- **Optimization**: INT8 quantization, model pruning, Docker containerization  
-
-## Industry Applications
-
-The agricultural vision system has broad applicability across several domains:
-
-- **Precision Agriculture**: Automated health and growth analysis  
-- **Smart Greenhouses**: Environmental control and crop monitoring  
-- **Vertical Farming**: Compact, scalable systems with real-time feedback  
-- **Agricultural Research**: Disease pattern tracking and growth analytics  
-- **Supply Chain Optimization**: Early detection enabling predictive yield management  
-
----
-
-This project demonstrates practical expertise in **computer vision, IoT, and embedded AI systems**, showcasing how **edge AI** can transform agricultural monitoring through real-time intelligence, efficiency, and scalability.
+**Edge Hardware:** Raspberry Pi 4, Pi Camera Module v2  
+**AI:** TensorFlow, TensorFlow Lite, MobileNetV2, INT8 quantization  
+**IoT:** MQTT (Eclipse Mosquitto), paho-mqtt  
+**Backend:** Python, MongoDB, Grafana  
+**Infrastructure:** Docker containerization

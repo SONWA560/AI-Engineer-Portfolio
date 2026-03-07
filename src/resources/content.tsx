@@ -60,7 +60,7 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Sonwabise, a BCom Information Systems graduate [Cum Laude].
+      I'm Sonwabise, a BCom Information Systems graduate [Cum Laude] and Micorsoft Azure Data Fundamentals certified professional based in Cape Town, South Africa. 
       <br /> I specialise in building intelligent systems that bridge data, automation, and innovation.
     </>
   ),
@@ -87,7 +87,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Sonwabise is a Cape Town-based BCom Information Systems graduate [Cum Laude]. With expertise spanning machine learning, 
+        Sonwabise is a Cape Town-based BCom Information Systems graduate [Cum Laude] and Microsoft Certified Azure Data professional (DP: 900). With expertise spanning machine learning, 
         data engineering, and business intelligence, he transforms complex business challenges into 
         intelligent, automated solutions. His work includes developing AI-powered vision systems, 
         IoT automation, and enterprise-scale document processing platforms using cutting-edge 
@@ -131,7 +131,14 @@ const about: About = {
             Designed custom APIs for Python-APEX integration, ensuring seamless communication between employee and admin interfaces with full system documentation.
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/projects/project-01/inventory-managemt-system-2.png",
+            alt: "TechInnovators Inventory Management System",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         company: "AI-Based Vision System for Smart Waste Sorting",
@@ -179,7 +186,7 @@ const about: About = {
       },
       {
         name: "Awards & Certifications",
-        description: <>DataCamp Associate Data Engineer (In Progress) • DataCamp Intermediate SQL • INSETA Bursary (2024-2025) • LinkedIn Learning PyTorch Deep Learning • Enactus UWC Top 15 Finalist (MTN Challenge) • Absa Inkanyezi IT, Cyber Security & Audit Academy</>,
+        description: <>Microsoft Azure Data Fundamentals (DP-900) • DataCamp Intermediate SQL • INSETA Bursary (2024-2025) • LinkedIn Learning PyTorch Deep Learning • Enactus UWC Top 15 Finalist (MTN Challenge) • Absa Inkanyezi IT, Cyber Security & Audit Academy</>,
       },
     ],
   },

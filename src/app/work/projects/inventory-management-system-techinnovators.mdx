@@ -1,0 +1,61 @@
+---
+title: "Inventory Management System for TechInnovators"
+publishedAt: "2024-08-15"
+summary: "A full-stack inventory management platform with QR-based authentication, fine-grained approval workflows, and real-time audit logging — built on a Python Flask frontend and Oracle APEX backend."
+images:
+  - "/images/projects/project-01/inventory-managemt-system-2.png"
+team:
+  - name: "Sonwabise Gcolotela"
+    role: "Full-Stack Developer"
+    avatar: "/images/avatar-sonwabise.jpeg"
+    linkedIn: "https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/"
+link: "https://inventorymanagement-pearl.vercel.app/"
+---
+
+## Overview
+
+The TechInnovators Inventory Management System is an end-to-end platform for tracking and managing organisational equipment across employee and administrative roles. Built with a clean two-tier architecture, it demonstrates full ownership of the data lifecycle: schema design, secure API communication, transactional workflows, and audit-ready reporting.
+
+A live demo is available on [Loom](https://www.loom.com/share/283e86d292464df3b16ce4106086cd32?sid=52aa3087-17f6-40b4-905e-4b74e18231a4). The source code is on [GitHub](https://github.com/SONWA560/InventoryManagementSystem).
+
+## Architecture
+
+The system follows a strict two-tier separation:
+
+**Frontend (Python Flask)** handles the employee-facing interface: authentication, equipment catalogue browsing, request submission, and returns. Authentication supports both QR code scanning and manual entry.
+
+**Backend (Oracle APEX)** owns all business logic, data storage, and the admin interface. Approvals, inventory updates, and usage logging all run here.
+
+All communication between tiers is over secure RESTful APIs using JSON — no direct database access from the frontend.
+
+## Data Model
+
+The Oracle database schema is fully normalised across five core tables: employees, equipment, requests, bookings, and usage logs. Key design decisions:
+
+- **Referential integrity constraints** enforce valid relationships across all transactions
+- **Audit trail by default** — every request, approval, and return generates a usage log entry
+- **Real-time synchronisation** — inventory state updates atomically with each transaction, preventing double-booking or stale reads
+
+The schema was designed with extensibility in mind, making it straightforward to plug in downstream analytics engines or BI dashboards.
+
+## Key Workflows
+
+**Equipment request:** Employee authenticates, browses the live catalogue, and submits a request. The system validates availability and routes it to an admin for approval.
+
+**Approval and dispatch:** Admin reviews requests in APEX, approves or rejects with a reason, and the inventory count updates immediately on approval.
+
+**Return and logging:** Employee returns equipment via the Flask interface. The return is logged with a timestamp and condition note, closing the booking and restoring availability.
+
+## Results
+
+- Centralised, real-time equipment tracking replacing manual spreadsheet processes
+- Full audit trail on every transaction, supporting compliance and operational reporting
+- QR-based check-in reducing authentication friction for non-technical staff
+- Modular architecture ready for integration with analytics dashboards or ERP systems
+
+## Tech Stack
+
+**Frontend:** Python, Flask, QR code authentication  
+**Backend:** Oracle APEX, Oracle Database (fully normalised schema)  
+**API:** RESTful JSON over HTTPS, structured error handling and status codes  
+**DevOps:** GitHub, Render.com (CI/CD), Vercel (deployment)
