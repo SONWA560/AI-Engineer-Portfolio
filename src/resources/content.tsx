@@ -100,6 +100,30 @@ const about: About = {
     title: "Projects & Experience",
     experiences: [
       {
+        company: "Simunye AI: South African Sign Language Recognition Model",
+        timeframe: "2026",
+        role: "AI Engineer & Accessibility Product Developer",
+        achievements: [
+          <>
+            Built a bidirectional communication platform for deaf-inclusive conversations and inclusive learning, combining South African Sign Language (SASL) practice tools with real-time recognition workflows.
+          </>,
+          <>
+            Developed Learn Mode with webcam-based feedback, a searchable SASL dictionary with video demonstrations, and Communicate Mode with sentence generation and live transcript output.
+          </>,
+          <>
+            Selected for the Isazi AI Accessibility Hackathon as one of 60 participants from 600+ applications, and one of 20 selected participants from the Western Cape.
+          </>,
+        ],
+        images: [
+          {
+            src: "/images/projects/project-01/Simunye_Model_Training.jpg",
+            alt: "Simunye AI Model Training",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
         company: "AJ Hair ZA – E-Commerce Platform",
         timeframe: "2025",
         role: "Full-Stack Developer",
