@@ -1,91 +1,103 @@
-# Magic Portfolio
+<div align="center">
+  <img src="https://raw.githubusercontent.com/SONWA560/magic-portfolio/main/public/images/avatar-sonwabise.jpeg" width="160" height="160" alt="Sonwabise Gcolotela" style="border-radius: 50%;" />
 
-Magic Portfolio is a simple, clean, beginner-friendly portfolio template. It supports an MDX-based content system for projects and blog posts, an about / CV page and a gallery.
+  # Sonwabise Gcolotela
 
-View the demo [here](https://demo.magic-portfolio.com).
+  **AI Engineer · Data Engineer · Full-Stack Developer**
 
-![Magic Portfolio](public/images/og/home.jpg)
+  📍 Cape Town, South Africa
 
-## Getting started
+  [![GitHub](https://img.shields.io/badge/GitHub-SONWA560-181717?logo=github&style=flat)](https://github.com/SONWA560)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0A66C2?logo=linkedin&style=flat)](https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/)
+  [![Email](https://img.shields.io/badge/Email-Me-D14836?logo=gmail&style=flat)](mailto:sonwabisegcolotela@icloud.com)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-sonwabisegcolotela.info-000000?logo=vercel&style=flat)](https://sonwabisegcolotela.info)
+</div>
 
-**1. Clone the repository**
-```
-git clone https://github.com/once-ui-system/magic-portfolio.git
-```
+## 👋 About Me
 
-**2. Install dependencies**
-```
-npm install
-```
+> BCom Information Systems graduate [Cum Laude] and Microsoft Azure Data Fundamentals certified professional based in Cape Town, South Africa. I specialise in building intelligent systems that bridge data, automation, and innovation — from AI-powered vision systems and NLP pipelines to full-stack web platforms and IoT automation.
 
-**3. Run dev server**
-```
-npm run dev
-```
+---
 
-**4. Edit config**
-```
-src/resources/once-ui.config.js
-```
+## 🛠️ Tech Stack
 
-**5. Edit content**
-```
-src/resources/content.js
-```
+**Languages**
 
-**6. Create blog posts / projects**
-```
-Add a new .mdx file to src/app/blog/posts or src/app/work/projects
-```
+[![Languages](https://skillicons.dev/icons?i=py,ts,js,html,css&perline=10)](https://skillicons.dev)
 
-Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+**AI & Machine Learning**
 
-## Documentation
+[![AI/ML](https://skillicons.dev/icons?i=pytorch,tensorflow,opencv,sklearn,anaconda&perline=10)](https://skillicons.dev)
 
-Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfolio/quick-start)
+**Frontend**
 
-## Features
+[![Frontend](https://skillicons.dev/icons?i=react,nextjs,tailwind,sass&perline=10)](https://skillicons.dev)
 
-### Once UI
-- All tokens, components & features of [Once UI](https://once-ui.com)
+**Backend & API**
 
-### SEO
-- Automatic open-graph and X image generation with next/og
-- Automatic schema and metadata generation based on the content file
+[![Backend](https://skillicons.dev/icons?i=fastapi,flask,nodejs,supabase,postgres&perline=10)](https://skillicons.dev)
 
-### Design
-- Responsive layout optimized for all screen sizes
-- Timeless design without heavy animations and motion
-- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+**Cloud & DevOps**
 
-### Content
-- Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
-- Generate and display social links automatically
-- Set up password protection for URLs
+[![Cloud/DevOps](https://skillicons.dev/icons?i=azure,gcp,firebase,docker,vercel,linux,git,github&perline=10)](https://skillicons.dev)
 
-### Localization
-- A localized, earlier version of Magic Portfolio is available with the next-intl library
-- To use localization, switch to the 'i18n' branch
+**Tools & Platforms**
 
-## Creators
+[![Tools](https://skillicons.dev/icons?i=mongodb,grafana,raspberrypi,arduino,postman,vscode,bash,notion&perline=10)](https://skillicons.dev)
 
-Lorant One: [Threads](https://www.threads.net/@lorant.one) / [LinkedIn](https://www.linkedin.com/in/lorant-one/)
+---
 
-## Get involved
+## 💼 Desired Roles
 
-- Join the Design Engineers Club on [Discord](https://discord.com/invite/5EyAQ4eNdS) and share your project with us!
-- Deployed your docs? Share it on the [Once UI Hub](https://once-ui.com/hub) too! We feature our favorite apps on our landing page.
+AI Engineer &nbsp;·&nbsp; Data Engineer &nbsp;·&nbsp; Full-Stack Developer
 
-## License
+---
 
-Distributed under the CC BY-NC 4.0 License.
-- Attribution is required.
-- Commercial usage is not allowed.
-- You can extend the license to [Dopler CC](https://dopler.app/license) by purchasing a [Once UI Pro](https://once-ui.com/pricing) license.
+## 📂 Featured Projects
 
-See `LICENSE.txt` for more information.
+### Simunye AI — South African Sign Language Recognition *(2026)*
+Bidirectional communication platform for deaf-inclusive conversations combining SASL practice tools with real-time recognition. Selected for the Isazi AI Accessibility Hackathon (top 20 from 600+ applicants in Western Cape).
 
-## Deploy with Vercel
+**Stack:** Computer Vision, NLP, Web Apps with Webcam Integration
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&project-name=portfolio&repository-name=portfolio&redirect-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&demo-title=Magic%20Portfolio&demo-description=Showcase%20your%20designers%20or%20developer%20portfolio&demo-url=https%3A%2F%2Fdemo.magic-portfolio.com&demo-image=%2F%2Fraw.githubusercontent.com%2Fonce-ui-system%2Fmagic-portfolio%2Fmain%2Fpublic%2Fimages%2Fog%2Fhome.jpg)
+### AJ Hair ZA — E-Commerce Platform *(2025)*
+Full-stack e-commerce platform for a South African wig retailer using Next.js 15, Firebase, Clerk auth, OpenAI GPT-3.5 Turbo for natural language search, and GPT-4o Vision for image-based product discovery.
+
+**Stack:** Next.js 15, Firebase, Clerk, OpenAI, Tailwind CSS, Vercel
+
+### AI-Powered RFP/RFQ Analysis System *(2024)*
+Enterprise document processing system leveraging Azure AI services (Form Recognizer, Cognitive Search, OpenAI) to automate RFP/RFQ analysis with 90%+ accuracy and 60% reduction in analysis time.
+
+**Stack:** React, FastAPI, Azure AI, SharePoint API, Azure DevOps
+
+### AI-Based Vision System for Smart Waste Sorting *(2024)*
+ML-powered vision system using MobileNetV2 with transfer learning to classify waste into 7 categories with 82.5% accuracy across 17,000 images.
+
+**Stack:** Python, PyTorch, Computer Vision, Deep Learning
+
+### Inventory Management System — TechInnovators *(2024)*
+Integrated equipment inventory tracking with QR code scanning, real-time check-ins, and automated reporting using Oracle APEX and Python.
+
+**Stack:** Oracle APEX, Python, Flask, REST APIs, QR Code
+
+### IoT-Based Automated Motion Detection System *(2024)*
+IoT security system using ESP32, PIR sensors, and MQTT protocol for real-time motion detection with buzzer and email alerting.
+
+**Stack:** Arduino/C++, ESP32, Raspberry Pi, MQTT
+
+---
+
+## 📫 Let's Connect
+
+I'm always open to collaborating on innovative projects, hackathons, and research in AI, data engineering, and full-stack development.
+
+- 🔗 **LinkedIn:** [Sonwabise Gcolotela](https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/)
+- 🐙 **GitHub:** [@SONWA560](https://github.com/SONWA560)
+- ✉️ **Email:** [sonwabisegcolotela@icloud.com](mailto:sonwabisegcolotela@icloud.com)
+- 🌐 **Portfolio:** [sonwabisegcolotela.info](https://sonwabisegcolotela.info)
+
+---
+
+<p align="center">
+  <i>Built with Next.js, Once UI, ☕, and a passion for intelligent systems</i>
+</p>
