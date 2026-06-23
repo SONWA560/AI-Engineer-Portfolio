@@ -99,5 +99,5 @@ I'm always open to collaborating on innovative projects, hackathons, and researc
 ---
 
 <p align="center">
-  <i>Built with Next.js, Once UI, ☕, and a passion for intelligent systems</i>
+  <i>Built with Next.js, ☕, and a passion for intelligent systems</i>
 </p>
