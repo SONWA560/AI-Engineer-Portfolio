@@ -1,0 +1,80 @@
+---
+title: "SABC+ Actionable Insights Platform"
+publishedAt: "2026-06-25"
+summary: "Data platform for SABC+, the VOD streaming arm of the South African Broadcasting Corporation. Built as part of an honours project team, with SABC+ as the live project sponsor."
+images:
+  - "/images/projects/project-01/AIP System architecture.png"
+
+tag: "Data Engineering"
+team:
+  - name: "Sonwabise Gcolotela"
+    role: "Data Engineer"
+    avatar: "/images/avatar-sonwabise.jpeg"
+    linkedIn: "https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/"
+
+---
+
+## Overview
+
+The **SABC+ Actionable Insights Platform** is an end-to-end data platform that ingests SABC+ telemetry, validates and anonymises it, then surfaces insights through dashboards for executives and analysts. The platform covers five areas: data ingestion, user behaviour analytics, content performance and ROI, monetisation intelligence, and personalisation.
+
+SABC+ is the VOD streaming arm of the South African Broadcasting Corporation. The project was built as part of an honours project team, with SABC+ as the live project sponsor.
+
+## The Problem
+
+SABC+ ran on fragmented operational data. Viewing data, ad revenue and billing sat in separate systems, reconciled manually by spreadsheet. This made content investment and advertising decisions slow and reactive, and made it hard to see which content was actually earning its keep.
+
+Without a unified data pipeline, the team could not answer basic questions about content performance, user retention, or monetisation efficiency in real time.
+
+## What We Built
+
+An end-to-end data platform following a **medallion architecture** pattern:
+
+**Bronze layer:** Raw events land from SABC+ telemetry and are validated against five mandatory fields. Records that fail validation are quarantined; those that pass move forward.
+
+**Silver layer:** Validated records are anonymised — user identifiers are replaced with tokens — and relationships between viewers, content, and sessions get modelled.
+
+**Gold layer:** Aggregated data feeds churn scoring, content ROI calculations, and the executive dashboards.
+
+### Platform Areas
+
+1. **Data Ingestion** — Azure Event Hubs and Azure Data Factory bring in viewing, content, and billing data
+2. **User Behaviour Analytics** — Session-level patterns and retention metrics
+3. **Content Performance and ROI** — Which content earns its keep and which does not
+4. **Monetisation Intelligence** — Ad revenue and billing insights
+5. **Personalisation** — Foundation for recommendation and targeting
+
+## Architecture
+
+![SABC+ Actionable Insights Platform System Architecture](/images/projects/project-01/AIP%20System%20architecture.png)
+
+Events flow through the pipeline: telemetry is ingested via Azure Event Hubs and Azure Data Factory, validated and anonymised, then stored in Azure SQL which powers the dashboard layer. Azure OpenAI provides plain language narrative summaries for executives.
+
+## My Role
+
+**Data Engineer** — I built the Azure backend pipeline end to end.
+
+**Situation:** SABC+ operational data was fragmented across viewing logs, ad revenue and billing systems, with no automated pipeline to bring it together. The team needed a working ingestion-to-warehouse path before any dashboard or analytics work could start.
+
+**Task:** Design and build the full Azure data pipeline, from ingestion through validation, anonymisation and into a queryable warehouse layer.
+
+**Action:**
+
+- Built Azure Data Factory pipelines to ingest viewing, content and billing data into the platform
+- Designed and implemented the validation service, enforcing five mandatory fields on every record before it moves further
+- Built and tested the anonymisation step that replaces user identifiers with tokens before storage
+- Designed the warehouse schema in Azure Synapse, then rebuilt it on Azure SQL once usage patterns showed Synapse was overbuilt for the project's scale and cost
+
+**Result:** A working ingestion-to-warehouse pipeline now feeding the platform's dashboards. The team is moving into iteration 2, migrating from synthetic to real SABC+ production data on this pipeline.
+
+## Status
+
+The project is in its second iteration, moving from synthetic data to real production data supplied by SABC+. Delivery follows Scrum, with sprints tracked in Jira.
+
+## Tech Stack
+
+**Cloud:** Azure Event Hubs, Azure Data Factory, Azure SQL, Azure OpenAI  
+**Backend:** FastAPI, Python  
+**Frontend:** React, TypeScript  
+**Methodology:** Scrum, Jira  
+**Architecture:** Medallion pattern (Bronze, Silver, Gold layers)
