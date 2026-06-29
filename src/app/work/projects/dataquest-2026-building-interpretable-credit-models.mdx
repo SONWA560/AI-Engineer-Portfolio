@@ -1,0 +1,144 @@
+---
+title: "FNB Dataquest 2026: Building Interpretable Credit Models"
+publishedAt: "2026-05-01"
+summary: "Delivered a fully interpretable credit risk model for FNB's DataQuest 2026 challenge — combining research on GLM theory and SA regulatory compliance, an interactive EDA tool, a 5-iteration WoE-encoded logistic regression pipeline (AUC 0.7907), a business decision dashboard, and a complete academic paper."
+images:
+  - "/images/projects/project-01/fnb-dataquest.png"
+
+tag: "Credit Risk & Interpretable ML"
+team:
+  - name: "Sonwabise Gcolotela"
+    role: "Data Scientist"
+    avatar: "/images/avatar-sonwabise.jpeg"
+    linkedIn: "https://www.linkedin.com/in/sonwabise-gcolotela-315b94296/"
+
+link: "https://challenge1.streamlit.app"
+---
+
+## Situation
+
+A retail lending company needed an interpretable, auditable credit risk model that could be defended to risk managers, business stakeholders, and South African regulators under the **National Credit Act (NCA §61)**, **POPIA (§71)**, and **PEPUDA**. Black-box models (Random Forest, XGBoost, Neural Networks) were explicitly ruled out despite their superior accuracy.
+
+The team was given a simulated loan book of ~121K applicants with 25 features, a baseline logistic regression at AUC 0.68, and a LightGBM ceiling of AUC 0.82 (for reference only). The constraint: **the final model must be logistic regression** — no non-linear models allowed.
+
+## Task
+
+The project had three deliverables:
+
+1. **Research & Interactive EDA Tool** — Research machine learning concepts relevant to credit modelling and build an interactive Streamlit application for univariate/bivariate exploration, including WoE/IV analysis and data quality reporting.
+
+2. **Improved Logistic Regression Model** — Through feature engineering alone (WoE encoding, interaction terms, regularisation), close the gap between the baseline logistic regression and the LightGBM ceiling while maintaining full interpretability.
+
+3. **Business Decision Dashboard** — Build a dashboard enabling business users to reason about the approval volume vs. risk trade-off, understand precision/recall in lending context, and configure decision thresholds.
+
+Additionally, the team produced a complete academic research paper covering GLM vs. non-linear theory, WoE/IV mathematics, and South African regulatory compliance with a full AI usage transparency reflection.
+
+## Action
+
+### Research & Methodology
+
+The team authored a research paper examining the mathematical and regulatory foundations of retail credit scorecard development. Key contributions:
+
+- **Structural comparison** of Generalised Linear Models (smooth, monotonic, additive log-odds) versus non-linear ensemble methods (jagged, step-wise, non-parametric hyper-rectangle partitions)
+- **Interpretability vs. complexity trade-off** — GLMs provide fully deterministic, auditable coefficients where each feature's direction and magnitude is directly traceable, while non-linear models sacrifice a verifiable formula for marginal accuracy gains
+- **WoE/IV framework** — Weight of Evidence encoding guarantees monotonic linear relationships between transformed features and log-odds, handles missing data naturally via dedicated bins, and enables logistic regression to process non-linear credit patterns without breaking linearity assumptions. Information Value provides an automated, low-overhead feature selection filter
+- **Regulatory analysis** under NCA §61(1) (prohibited discrimination), NCA §61(7) (reverse onus provision), POPIA §71 (automated decision-making), and PEPUDA §13 (burden of proof), identifying why features like `region`, `branch_code_id`, and `email_domain_type` carry proxy discrimination risk
+
+### Interactive EDA Tool
+
+Built a multi-page Streamlit dashboard enabling credit-risk analysts to:
+
+- **Univariate exploration** — select any feature and inspect its distribution across the target, with automatic WoE and IV computation
+- **Bivariate exploration** — scatterplots and heatmaps to surface interaction effects and subgroup patterns
+- **Data quality reporting** — missing value patterns, cardinality, distributional anomalies
+
+The EDA tool directly informed the modeling strategy, surfacing that `credit_utilisation × interest_rate` jointly amplify default risk.
+
+### Modelling Pipeline
+
+Five iterative versions of logistic regression, each building on the previous:
+
+| Version | AUC | Gini | Key Change |
+|---|---|---|---|
+| v1: Baseline WoE | 0.5933 | 0.1866 | WoE on 9 initial features |
+| v2: Extended WoE | 0.7640 | 0.5280 | 11 features + balanced class weights |
+| v3: Refined WoE | 0.7872 | 0.5743 | Smoothed WoE + L2 regularisation |
+| v4: Interactions | 0.7884 | 0.5768 | Added utilisation × rate, DTI × loan |
+| v5: Optimised | **0.7907** | **0.5813** | L1 LASSO regularisation, adaptive bins |
+
+### Key Engineering Decisions
+
+- **WoE/IV encoding** normalised non-linear relationships and handled ~50% missing data on `months_since_last_delinquency` naturally via a dedicated missing bin
+- **EDA-driven interaction discovery** — credit utilisation and interest rate jointly amplify default risk; engineered interaction term `util_x_rate`
+- **IV-based feature selection** flagged `region` (IV = 0.0005) and `loan_purpose` (IV = 0.0009) as noise; strong predictors were `interest_rate` (IV = 0.42), `months_since_last_delinquency` (IV = 0.41), and `annual_income` (IV = 0.38)
+- **L1 LASSO regularisation** prevented overfitting on 17 WoE-encoded features
+- **Class weighting (balanced)** addressed the ~8-10% base default rate imbalance
+- Preferred IV-based selection over automated methods (RFE rejected), and rejected SMOTE oversampling as it would complicate regulatory interpretation
+
+### Final Model Equation
+
+The model produces a fully interpretable log-odds equation with 19 coefficients, each directly traceable and auditable:
+
+```text
+Log-Odds(Default) = -0.0216
+  + (-0.5742 × age_woe)
+  + (-0.9145 × annual_income_woe)
+  + (-0.6182 × employment_length_years_woe)
+  + (-1.2266 × num_open_accounts_woe)
+  + (-1.2401 × credit_utilisation_pct_woe)
+  + (-0.1754 × dti_ratio_woe)
+  + (-0.3028 × interest_rate_woe)
+  + (0.0494 × loan_amount_woe)
+  + (-0.2460 × months_since_oldest_account_woe)
+  + (-1.0684 × num_hard_inquiries_6mo_woe)
+  + (-0.7035 × months_at_current_address_woe)
+  + (-1.1432 × home_ownership_woe)
+  + (-0.6423 × loan_purpose_woe)
+  + (-0.8768 × region_woe)
+  + (-0.0614 × total_revolving_balance_woe)
+  + (-0.4876 × pct_accounts_current_woe)
+  + (-0.8022 × num_delinquencies_2yr_woe)
+  + (0.0501 × util_x_rate_woe)
+  + (-0.7386 × months_since_last_delinquency_woe)
+```
+
+### Business Decision Dashboard
+
+Extended the Streamlit app with policy-level thinking tools:
+
+- **Volume vs. Risk trade-off** — see how approval volume changes across decision thresholds and whether pushing for higher volume disproportionately increases portfolio risk
+- **Precision vs. Recall in lending terms** — precision as the cost of rejecting creditworthy applicants, recall as the cost of missing defaults
+- **Portfolio summary** at any threshold, with regional risk visualisation
+
+### AI Usage Reflection
+
+The team used AI tools as analytical assistants. AI assisted with syntax guidance for WoE encoding prototyping in Colab, suggested `class_weight="balanced"` for imbalance handling and `format="mixed"` for date parsing, and supplemented EDA with additional plot types (gain/lift charts, regional risk bars). The team rejected automated feature selection (RFE) in favour of domain-informed IV-based selection, and rejected SMOTE oversampling as it would complicate regulatory interpretation. The core model logic, feature engineering, and research were team-authored.
+
+## Results
+
+- **Final AUC: 0.7907** — closes **93%** of the gap between baseline (0.68) and LightGBM ceiling (0.82)
+- **Final Gini: 0.5813** — sits squarely in the 0.40–0.60 benchmark range for a reliable retail credit scorecard
+- **Strongest predictors:** `interest_rate` (IV = 0.42), `months_since_last_delinquency` (IV = 0.41), `annual_income` (IV = 0.38)
+- Delivered a fully interpretable **log-odds equation with 19 coefficients** — each directly traceable and auditable
+- **Regulatory analysis** identified 3 features with proxy discrimination risk (`region`, `branch_code_id`, `email_domain_type`) under NCA §61, POPIA §71, and PEPUDA
+- **Research paper** covering GLM vs. non-linear theory, WoE/IV mathematics, South African regulatory compliance, and full AI usage transparency
+
+## Research Paper
+
+- **Overleaf:** [https://www.overleaf.com/5642772373rvvdtgjbrxxg#68f94b](https://www.overleaf.com/5642772373rvvdtgjbrxxg#68f94b)
+
+## Repository & Demo
+
+- **Live Dashboard:** [challenge1.streamlit.app](https://challenge1.streamlit.app)
+- **GitHub Repository:** [github.com/FNB-Dataquest/challenge1](https://github.com/FNB-Dataquest/challenge1)
+
+## Skills & Technologies
+
+**Languages:** Python 3.11  
+**ML/Stats:** scikit-learn (LogisticRegression, metrics), WoE/IV encoding, LASSO/Ridge regularisation  
+**Data:** pandas, numpy  
+**Visualization:** matplotlib, seaborn  
+**App Framework:** Streamlit (3-page interactive dashboard)  
+**Tooling:** uv (package manager), hatchling (build), ruff (linting), lefthook (pre-commit hooks)  
+**Domain:** Credit risk modeling, consumer finance, South African regulatory compliance (NCA, POPIA, PEPUDA, NCR guidelines)  
+**Methodology:** Feature engineering, EDA-driven modeling, interpretable ML, class imbalance handling, regulatory fairness analysis
