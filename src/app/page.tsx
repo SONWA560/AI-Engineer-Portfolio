@@ -40,7 +40,7 @@ export default function Home() {
         readMoreLink={about.path}
         imageSrc={person.avatar}
         imageAlt={person.name}
-        overlayText={{ part1: "AI", part2: "Data Engineer" }}
+        overlayText={{ part1: "AI", part2: "Engineer" }}
       />
       <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
         <RevealFx translateY="16" delay={0.6}>
